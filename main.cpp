@@ -1,8 +1,7 @@
 #include <iostream>
-using namespace std;
+#include "journal.hpp"
 
 int main() {
-  int a, b;
-  cin >> a >> b;
-  cout << a + b;
+  journal c("kirill", 1);
+  c.print_info();
 }

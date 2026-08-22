@@ -4,15 +4,13 @@
 #include <iostream>
 
 struct journal {
-  string s;
+  std::string s;
   int lvl;
-  string imp;
-  journal(string name, int l) {
-    s = name;
-    lvl = lvl;
-  }
+  std::string imp;
+  journal(std::string name, int l): s(name), lvl(l)
+  {}
   void print_info() {
-    cout << "name " << s << "\nlevel " << lvl;
+    std::cout << "name " << s << "\nlevel " << lvl << "\n";
   }
 };
 
