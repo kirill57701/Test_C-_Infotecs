@@ -3,5 +3,6 @@
 
 int main() {
   journal c("kirill", 1);
+  c.save_mess("hello", "22-08-2026 12:38");
   c.print_info();
 }
