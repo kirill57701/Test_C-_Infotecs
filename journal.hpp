@@ -5,29 +5,29 @@
 #include <fstream>
 
 struct journal {
-  std::string s;
+  std::string name;
   int lvl;
   std::string txt;
-  std::string t;
-  journal(std::string name, int l): s(name), lvl(l)
+  std::string time;
+  journal(std::string name_init, int l_init): name(name_init), lvl(l_init)
   {}
   void print_info() {
-    std::cout << "name " << s << "\nlevel " << lvl << "\nmessage " << txt << "\ntime " << t << "\n";
+    std::cout << "name " << name << "\nlevel " << lvl << "\nmessage " << txt << "\ntime " << time << "\n";
   }
-  void save_mess(std::string mess, std::string time, int l) {
+  void save_mess(std::string mess, std::string time_save, int l) {
     if (l >= lvl) {
-      if (mess.size() == 0 || time.size() == 0) {
+      if (mess.size() == 0 || time_save.size() == 0) {
         throw std::logic_error("err, enter message and time");
       }
       txt = mess;
-      t = time;
+      time = time_save;
     } else {
       throw std::logic_error("err, lvl is small");
     }
   }
   void change_lvl(int new_lvl) {
     if (new_lvl < lvl) {
-      throw std::logic_error("err, lvl small");
+      return;
     } else {
       lvl = new_lvl;
     }
@@ -35,7 +35,7 @@ struct journal {
   void save_file(std::string s) {
     std::ofstream out;
     out.open(s);
-    out << "name: " << s << "\nlevel: " << lvl << "\nmessage: " << txt << "\ntime: " << t << "\n";
+    out << "name: " << name << "\nlevel: " << lvl << "\nmessage: " << txt << "\ntime: " << time << "\n";
     out.close();
   }
   void save_file() {
@@ -43,7 +43,7 @@ struct journal {
     std::cin >> s;
     std::ofstream out;
     out.open(s);
-    out << "name: " << s << "\nlevel: " << lvl << "\nmessage: " << txt << "\ntime: " << t << "\n";
+    out << "name: " << name << "\nlevel: " << lvl << "\nmessage: " << txt << "\ntime: " << time << "\n";
     out.close();
   }
 };
