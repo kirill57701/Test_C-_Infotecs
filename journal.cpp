@@ -37,7 +37,7 @@ void journal::save_mess(std::string mess, int l) {
     time_t t = std::time(nullptr);
     tm* timer = localtime(&t);
     std::ofstream out;
-    out.open(name);
+    out.open(name, std::ios::app);
     out << "name: " << name << "\nlevel: " << lvl << "\nmessage: " << mess << "\ntime: " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec;
     out.close();
   } else {
