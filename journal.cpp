@@ -15,17 +15,13 @@ journal::journal(std::string name_init, int l_init): name(name_init), lvl(l_init
 }
 
 void journal::change_lvl(int new_lvl) {
-  if (new_lvl < lvl) {
-    return;
+  lvl = new_lvl;
+  if (lvl == 1) {
+    lvl_name = "usual";
+  } else if (lvl == 2) {
+    lvl_name = "attention";
   } else {
-    lvl = new_lvl;
-    if (lvl == 1) {
-      lvl_name = "usual";
-    } else if (lvl == 2) {
-      lvl_name = "attention";
-    } else {
-      lvl_name = "err";
-    }
+    lvl_name = "err";
   }
 }
 
