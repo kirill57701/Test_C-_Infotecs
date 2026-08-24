@@ -36,17 +36,9 @@ struct journal {
       lvl = new_lvl;
     }
   }
-  void save_file(std::string s) {
-    std::ofstream out;
-    out.open(s);
-    out << "name " << name << "\nlevel " << lvl << "\nmessage " << txt << "\ntime " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec;
-    out.close();
-  }
   void save_file() {
-    std::string s;
-    std::cin >> s;
     std::ofstream out;
-    out.open(s);
+    out.open(name);
     out << "name " << name << "\nlevel " << lvl << "\nmessage " << txt << "\ntime " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec;
     out.close();
   }
