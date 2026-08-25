@@ -1,0 +1,2 @@
+/usr/bin/ar qc libjour_stat.a CMakeFiles/jour_stat.dir/journal.cpp.o
+/usr/bin/ranlib libjour_stat.a
