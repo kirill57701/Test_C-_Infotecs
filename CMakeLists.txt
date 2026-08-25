@@ -4,9 +4,9 @@ project(journal VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(jour_stat STATIC journal.cpp)
-add_library(jour_dyn SHARED journal.cpp)
+add_library(jour_stat STATIC pt1/journal.cpp)
+add_library(jour_dyn SHARED pt1/journal.cpp)
 
-add_executable(main main.cpp)
+add_executable(main pt2/main.cpp)
 
 target_link_libraries(main PRIVATE jour_stat)
