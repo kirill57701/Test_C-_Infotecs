@@ -5,13 +5,15 @@
 #include <fstream>
 #include <ctime>
 #include <sys/socket.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
 
 struct journal {
   std::string name;
   int lvl;
   std::string lvl_name;
   int server;
-  std::string addr;
+  sockaddr_in addr;
   journal(std::string name_init, int l_init);
   journal(std::string name_init, int l_init, std::string addr_init, int server);
   void save_mess(std::string mess, int l);
