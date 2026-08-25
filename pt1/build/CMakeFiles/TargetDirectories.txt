@@ -1,5 +1,0 @@
-/home/kirill/Test_C-_Infotecs/build/CMakeFiles/jour_stat.dir
-/home/kirill/Test_C-_Infotecs/build/CMakeFiles/jour_dyn.dir
-/home/kirill/Test_C-_Infotecs/build/CMakeFiles/main.dir
-/home/kirill/Test_C-_Infotecs/build/CMakeFiles/edit_cache.dir
-/home/kirill/Test_C-_Infotecs/build/CMakeFiles/rebuild_cache.dir
