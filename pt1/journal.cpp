@@ -31,7 +31,7 @@ void journal::save_mess(std::string mess, int l) {
     tm* timer = localtime(&t);
     std::ofstream out;
     out.open(name, std::ios::app);
-    out << "\nname: " << name << "\nlevel: " << l << "\nmessage: " << mess << "\ntime: " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec << "\n";
+    out << "\nname: " << name << "\nlevel: " << (l == 1 ? "usual" : (l == 2 ? "attention" : "err")) << "\nmessage: " << mess << "\ntime: " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec << "\n";
     out.close();
   } else {
     std::cerr << "err, lvl small\n";
