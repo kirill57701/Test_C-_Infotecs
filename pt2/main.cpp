@@ -32,4 +32,5 @@ int main(int argc, char** argv) {
     std::thread t2(mut_save, std::ref(master), r, r1);
     t2.detach();
   }
+  master.cl_ofstr();
 }
