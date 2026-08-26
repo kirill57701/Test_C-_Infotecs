@@ -11,6 +11,7 @@ int main(int argc, char** argv) {
   std::string r;
   int r1 = master.lvl;
   while (std::cin >> r) {
+    r1 = master.lvl;
     if (r == "end") {
       break;
     }
