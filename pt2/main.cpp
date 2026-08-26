@@ -13,15 +13,14 @@ int main() {
   */
   std::string r;
   int r1 = master.lvl;
-  while (1) {
+  while (std::cin >> r) {
     int c;
-    std::cin >> r;
     if (std::cin >> c) {
       r1 = c;
     } else {
       std::cin.clear();
     }
-    if (std::cin.eof() || r == "end") {
+    if (r == "end") {
       break;
     } else {
       std::thread t2(&journal::save_mess, &master, r, r1);
