@@ -34,7 +34,7 @@ void journal::save_mess(std::string mess, int l) {
     out << "\nname: " << name << "\nlevel: " << l << "\nmessage: " << mess << "\ntime: " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec << "\n";
     out.close();
   } else {
-    std::cerr << "err, lvl small";
+    std::cerr << "err, lvl small\n";
     return;
   }
 }
