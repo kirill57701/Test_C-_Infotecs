@@ -10,3 +10,9 @@ add_library(jour_dyn SHARED pt1/journal.cpp)
 add_executable(main pt2/main.cpp)
 
 target_link_libraries(main PRIVATE jour_stat)
+
+enable_testing()
+
+add_executable(jour_test tests/test-journal.cpp)
+
+add_test(NAME unit_tests COMMAND tests)
