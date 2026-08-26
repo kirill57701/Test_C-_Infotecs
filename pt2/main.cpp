@@ -1,6 +1,14 @@
 #include "../pt1/journal.hpp"
 #include <iostream>
 #include <thread>
+#include <mutex>
+
+std::mutex mut;
+
+void mut_save(journal& master, std::string mess, int lvl) {
+  std::lock_guard<std::mutex> lock(mut);
+  master.save_mess(mess, lvl);
+}
 
 int main(int argc, char** argv) {
   if (argc < 3 || argc > 3) {
@@ -21,7 +29,7 @@ int main(int argc, char** argv) {
     } else {
       std::cin.clear();
     }
-    std::thread t2(&journal::save_mess, &master, r, r1);
-    t2.join();
+    std::thread t2(mut_save, std::ref(master), r, r1);
+    t2.detach();
   }
 }
