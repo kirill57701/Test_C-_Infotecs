@@ -13,7 +13,6 @@ struct journal {
   journal(std::string name_init, int l_init);
   void save_mess(std::string mess, int l);
   void change_lvl(int new_lvl);
-  void cl_ofstr();
 };
 
 #endif

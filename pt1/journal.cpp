@@ -8,7 +8,6 @@ journal::journal(std::string name_init, int l_init): name(name_init), lvl(l_init
   } else {
     lvl_name = "err";
   }
-  out.open(name, std::ios::app);
 }
 
 void journal::change_lvl(int new_lvl) {
@@ -30,13 +29,12 @@ void journal::save_mess(std::string mess, int l) {
     }
     time_t t = std::time(nullptr);
     tm* timer = localtime(&t);
+    std::ofstream out;
+    out.open(name, std::ios::app);
     out << "\nname: " << name << "\nlevel: " << l << "\nmessage: " << mess << "\ntime: " << timer->tm_hour << ':' << timer->tm_min << ':' << timer->tm_sec << "\n";
+    out.close();
   } else {
     std::cerr << "err, lvl small\n";
     return;
   }
-}
-
-void journal::cl_ofstr() {
-  out.close();
 }
