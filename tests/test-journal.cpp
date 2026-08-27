@@ -1,49 +1,78 @@
-#define BOOST_TEST_MODULE test_journal
-#include <boost/test/included/unit_test.hpp>
 #include "../pt1/journal.hpp"
 #include <string>
 
-BOOST_AUTO_TEST_CASE(test_init_us) {
-  std::string s = "hello";
-  int c = 1;
-  journal master{s, c};
-  BOOST_CHECK_EQUAL(1, master.lvl);
-  BOOST_CHECK_EQUAL("hello", master.name);
-  BOOST_CHECK_EQUAL("usual", master.lvl_name);
+template<class T>
+int is_eq(T a, T b) {
+  if (a != b) {
+    return 1;
+  }
+  return 0;
 }
 
-BOOST_AUTO_TEST_CASE(test_init_at) {
+int test_init_us() {
   std::string s = "hello";
-  int c = 2;
+  int c = 1, d = 0;
   journal master{s, c};
-  BOOST_CHECK_EQUAL(2, master.lvl);
-  BOOST_CHECK_EQUAL("hello", master.name);
-  BOOST_CHECK_EQUAL("attention", master.lvl_name);
+  d += is_eq(1, master.lvl);
+  d += is_eq<std::string>("hello", master.name);
+  d += is_eq<std::string>("usual", master.lvl_name);
+  return d;
 }
 
-BOOST_AUTO_TEST_CASE(test_init_er) {
+int test_init_at() {
   std::string s = "hello";
-  int c = 3;
+  int c = 2, d = 0;
   journal master{s, c};
-  BOOST_CHECK_EQUAL(3, master.lvl);
-  BOOST_CHECK_EQUAL("hello", master.name);
-  BOOST_CHECK_EQUAL("err", master.lvl_name);
+  d += is_eq(2, master.lvl);
+  d += is_eq<std::string>("hello", master.name);
+  d += is_eq<std::string>("attention", master.lvl_name);
+  return d;
 }
 
-BOOST_AUTO_TEST_CASE(test_change_lvl) {
+int test_init_er() {
   std::string s = "hello";
-  int c = 1;
+  int c = 3, d = 0;
   journal master{s, c};
-  BOOST_CHECK_EQUAL(1, master.lvl);
-  BOOST_CHECK_EQUAL("hello", master.name);
-  BOOST_CHECK_EQUAL("usual", master.lvl_name);
+  d += is_eq(3, master.lvl);
+  d += is_eq<std::string>("hello", master.name);
+  d += is_eq<std::string>("err", master.lvl_name);
+  return d;
+}
+
+int test_change_lvl() {
+  std::string s = "hello";
+  int c = 1, d = 0;
+  journal master{s, c};
+  d += is_eq(1, master.lvl);
+  d += is_eq<std::string>("hello", master.name);
+  d += is_eq<std::string>("usual", master.lvl_name);
   master.change_lvl(3);
-  BOOST_CHECK_EQUAL(3, master.lvl);
-  BOOST_CHECK_EQUAL("hello", master.name);
-  BOOST_CHECK_EQUAL("err", master.lvl_name);
+  d += is_eq(3, master.lvl);
+  d += is_eq<std::string>("hello", master.name);
+  d += is_eq<std::string>("err", master.lvl_name);
   master.change_lvl(2);
-  BOOST_CHECK_EQUAL(2, master.lvl);
-  BOOST_CHECK_EQUAL("hello", master.name);
-  BOOST_CHECK_EQUAL("attention", master.lvl_name);
+  d += is_eq(2, master.lvl);
+  d += is_eq<std::string>("hello", master.name);
+  d += is_eq<std::string>("attention", master.lvl_name);
+  return d;
+}
 
+int main() {
+  if (test_init_us()) {
+    std::cerr << "err, test not pass\n";
+    return -1;
+  }
+  if (test_init_at()) {
+    std::cerr << "err, test not pass\n";
+    return -1;
+  }
+  if (test_init_er()) {
+    std::cerr << "err, test not pass\n";
+    return -1;
+  }
+  if (test_change_lvl()) {
+    std::cerr << "err, test not pass\n";
+    return -1;
+  }
+  std::cout << "tests passed good\n";
 }
