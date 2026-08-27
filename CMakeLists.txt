@@ -16,4 +16,4 @@ enable_testing()
 add_executable(jour_test tests/test-journal.cpp)
 target_link_libraries(jour_test PRIVATE jour_stat)
 
-add_test(NAME unit_tests COMMAND tests)
+add_test(NAME unit_tests COMMAND jour_test)
